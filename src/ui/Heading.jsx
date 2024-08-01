@@ -20,6 +20,6 @@ const Heading = styled.h1`
       font-weight: 500;
     `}
  
-    line-height:3rem;
+    line-height:4rem;
 `;
 export default Heading;
