@@ -2,15 +2,18 @@ import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
+import SpinnerMini from "../../ui/SpinnerMini";
 import { useForm } from "react-hook-form";
+import useSignup from "./useSignup";
 // Email regex: /\S+@\S+\.\S+/
 
 function SignupForm() {
-  const { register, formState, handleSubmit, getValues } = useForm();
+  const { signup, isLoading } = useSignup();
+  const { register, formState, handleSubmit, getValues, reset } = useForm();
   const { errors } = formState;
 
-  function onSubmit(data) {
-    console.log(data);
+  function onSubmit({ email, password, fullName }) {
+    signup({ email, password, fullName }, { onSettled: () => reset() });
   }
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -18,6 +21,7 @@ function SignupForm() {
         <Input
           type="text"
           id="fullName"
+          disabled={isLoading}
           {...register("fullName", { required: "This Field is Required" })}
         />
       </FormRow>
@@ -26,6 +30,7 @@ function SignupForm() {
         <Input
           type="email"
           id="email"
+          disabled={isLoading}
           {...register("email", {
             required: "This Field is Required",
             pattern: {
@@ -43,6 +48,7 @@ function SignupForm() {
         <Input
           type="password"
           id="password"
+          disabled={isLoading}
           {...register("password", {
             required: "This Field is Required",
             minLength: {
@@ -57,6 +63,7 @@ function SignupForm() {
         <Input
           type="password"
           id="passwordConfirm"
+          disabled={isLoading}
           {...register("passwordConfirm", {
             required: "This Field is Required",
             validate: (value) =>
@@ -67,10 +74,12 @@ function SignupForm() {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button $variation="secondary" type="reset">
+        <Button $variation="secondary" disabled={isLoading} type="reset">
           Cancel
         </Button>
-        <Button>Create new user</Button>
+        <Button disabled={isLoading}>
+          {isLoading ? <SpinnerMini /> : "Create new user"}
+        </Button>
       </FormRow>
     </Form>
   );
