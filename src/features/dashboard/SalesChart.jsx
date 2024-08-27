@@ -22,22 +22,16 @@ const StyledSalesChart = styled(DashboardBox)`
   }
 `;
 
-const CustomYAxis = ({ unit, ...restProps }) => (
-  <YAxis {...restProps} unit={unit} />
-);
-const CustomXAxis = ({ dataKey, ...restProps }) => (
-  <XAxis {...restProps} dataKey={dataKey} />
-);
-
 const MyChart = ({ data, colors }) => (
   <ResponsiveContainer height={300} width="100%">
     <AreaChart data={data}>
-      <CustomXAxis
+      <XAxis
         dataKey="label"
         tick={{ fill: colors.text }}
         tickLine={{ stroke: colors.text }}
       />
-      <CustomYAxis
+
+      <YAxis
         unit="$"
         tick={{ fill: colors.text }}
         tickLine={{ stroke: colors.text }}
@@ -100,7 +94,10 @@ function SalesChart({ bookings, numOfDays }) {
 
   return (
     <StyledSalesChart>
-      <Heading as="h2">Sales</Heading>
+      <Heading as="h2">
+        Sales from {format(allDates.at(0), "MMM dd yyyy")}&mdash;
+        {format(allDates.at(-1), "MMM dd yyyy")}
+      </Heading>
       <MyChart data={data} colors={colors} />
     </StyledSalesChart>
   );
