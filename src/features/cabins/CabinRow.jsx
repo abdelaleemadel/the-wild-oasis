@@ -71,7 +71,11 @@ function CabinRow({ cabin }) {
             <Menus.Toggle id={id} />
 
             <Menus.List id={id}>
-              <Menus.Button icon={<HiSquare2Stack />} onClick={handleDuplicate}>
+              <Menus.Button
+                icon={<HiSquare2Stack />}
+                disabled={isCreating}
+                onClick={handleDuplicate}
+              >
                 Duplicate
               </Menus.Button>
               <Modal.Open opens="edit">

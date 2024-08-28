@@ -28,7 +28,7 @@ function CheckinBooking() {
   const [addBreakfast, setAddBreakfast] = useState(false);
 
   const moveBack = useMoveBack();
-  const { booking, isLoading, error } = useBooking();
+  const { booking, isLoading } = useBooking();
   const { settings, isLoading: isLoadingSettings } = useSettings();
   const { checkin, isCheckingIn } = useCheckin();
 
