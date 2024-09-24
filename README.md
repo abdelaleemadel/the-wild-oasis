@@ -8,8 +8,6 @@ Welcome to **The Wild Oasis**! This project is a comprehensive hotel management 
 - Features
 - Technologies Used
 - Installation
-- Usage
-- Contributing
 
 ## Introduction
 
