@@ -5,7 +5,7 @@ import { HiBars3 } from "react-icons/hi2";
 
 const StyledHeader = styled.header`
   background-color: var(--color-grey-0);
-  padding: 1.2rem 4.8rem;
+  padding: 1.2rem 7.5%;
   border-bottom: 1px solid var(--color-grey-100);
   display: flex;
   gap: 2.4rem;
@@ -17,7 +17,9 @@ const StyledHeader = styled.header`
     margin-inline-end: auto;
     cursor: pointer;
   }
-
+  @media screen and (min-width: 576px) {
+    padding: 1.2rem 4.8rem;
+  }
   @media screen and (min-width: 1200px) {
     & > svg {
       display: none;

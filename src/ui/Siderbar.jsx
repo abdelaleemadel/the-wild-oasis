@@ -11,18 +11,16 @@ const StyledSidebar = styled.aside`
   flex-direction: column;
   gap: 3.2rem;
   transition: all 0.3s ease-in-out;
-  position: absolute;
+  position: fixed;
   width: min(26rem, 100vw);
   top: 0;
   bottom: 0;
   z-index: 1;
+  transform: translateX(-100%);
   &.open {
     transform: translateX(0);
   }
 
-  &.closed {
-    transform: translateX(-100%);
-  }
   & > svg {
     align-self: flex-end;
     font-size: 2.5rem;
@@ -30,7 +28,9 @@ const StyledSidebar = styled.aside`
   }
   @media screen and (min-width: 1200px) {
     position: static;
-    width: 26rem;
+    transform: translateX(0) !important;
+    transition: transform 0s;
+
     & > svg {
       display: none;
     }
@@ -39,7 +39,7 @@ const StyledSidebar = styled.aside`
 
 function Siderbar({ isClose, setIsClose }) {
   return (
-    <StyledSidebar className={`${isClose ? "closed" : "open"}`}>
+    <StyledSidebar className={`${!isClose && "open"}`}>
       <HiXMark onClick={() => setIsClose(true)} />
       <Logo />
       <MainNav />
