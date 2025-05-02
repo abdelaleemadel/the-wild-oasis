@@ -2,12 +2,17 @@ import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import Header from "./Header";
 import Siderbar from "./Siderbar";
+import { useState } from "react";
 
 const StyledAppLayout = styled.div`
-  display: grid;
-  grid-template-columns: 26rem 1fr;
-  grid-template-rows: auto 1fr;
-  height: 100vh;
+  min-height: 100vh;
+  position: relative;
+
+  @media screen and (min-width: 1200px) {
+    display: grid;
+    grid-template-columns: 26rem 1fr;
+    grid-template-rows: auto 1fr;
+  }
 `;
 
 const Main = styled.main`
@@ -23,10 +28,12 @@ const Container = styled.div`
   gap: 3.2rem;
 `;
 function AppLayout() {
+  const [isClose, setIsClose] = useState(true);
+
   return (
     <StyledAppLayout>
-      <Header />
-      <Siderbar />
+      <Header isClose={isClose} setIsClose={setIsClose} />
+      <Siderbar isClose={isClose} setIsClose={setIsClose} />
       <Main>
         <Container>
           <Outlet />
