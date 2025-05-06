@@ -7,6 +7,7 @@ import { useState } from "react";
 const StyledAppLayout = styled.div`
   min-height: 100vh;
   position: relative;
+  background-color: var(--color-grey-50);
 
   @media screen and (min-width: 1200px) {
     display: grid;
@@ -16,12 +17,8 @@ const StyledAppLayout = styled.div`
 `;
 
 const Main = styled.main`
-  background-color: var(--color-grey-50);
   padding: 4rem 4.8rem 6.4rem;
   overflow: auto;
-  position: fixed;
-  width: 100%;
-  height: 100%;
 `;
 const Container = styled.div`
   max-width: 120rem;
