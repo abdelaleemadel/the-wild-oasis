@@ -6,6 +6,15 @@ import {
 } from "react-icons/hi2";
 import Stat from "./Stat";
 import { formatCurrency } from "../../utils/helpers";
+import styled from "styled-components";
+
+const StyledStatsList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+  width: 100%;
+  margin-bottom: 2rem;
+`;
 function Stats({ bookings, confirmedStays, numOfDays, cabinsCount }) {
   //1.
   const numBookings = bookings.length;
@@ -20,7 +29,7 @@ function Stats({ bookings, confirmedStays, numOfDays, cabinsCount }) {
     confirmedStays.reduce((acc, curr) => acc + curr.numNights, 0) /
     (numOfDays * cabinsCount);
   return (
-    <>
+    <StyledStatsList>
       <Stat
         title="Bookings"
         color="blue"
@@ -45,7 +54,7 @@ function Stats({ bookings, confirmedStays, numOfDays, cabinsCount }) {
         icon={<HiOutlineChartBar />}
         value={Math.round(occupancy * 100) + "%"}
       />
-    </>
+    </StyledStatsList>
   );
 }
 
