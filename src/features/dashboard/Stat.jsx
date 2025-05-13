@@ -5,19 +5,21 @@ const StyledStat = styled.div`
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
-  width: 75%;
   padding: 1.6rem;
   display: grid;
   grid-template-columns: 6.4rem 1fr;
   grid-template-rows: auto auto;
   column-gap: 1.6rem;
   row-gap: 0.4rem;
-  @media screen and (min-width: 576px) {
-    width: 45%;
-    margin-inline: auto;
+  @media screen and (max-width: 1020px) and (min-width: 600px),
+    (max-width: 1280px) and (min-width: 1200px) {
+    width: 47%;
   }
-  @media screen and (min-width: 1300px) {
-    width: auto;
+  @media screen and (max-width: 600px) and (min-width: 400px) {
+    width: 75%;
+  }
+  @media screen and (max-width: 400px) {
+    width: 100%;
   }
 `;
 
