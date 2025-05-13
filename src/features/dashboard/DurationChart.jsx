@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
+import { useEffect, useState } from "react";
 
 const ChartBox = styled.div`
   /* Box */
@@ -17,7 +18,7 @@ const ChartBox = styled.div`
   border-radius: var(--border-radius-md);
 
   padding: 2.4rem 3.2rem;
-  /* grid-column: 3 / span 2; */
+
   grid-area: duration;
   & > *:first-child {
     margin-bottom: 1.6rem;
@@ -25,6 +26,19 @@ const ChartBox = styled.div`
 
   & .recharts-pie-label-text {
     font-weight: 600;
+  }
+
+  @media screen and (max-width: 520px) and (min-width: 450px) {
+    padding-inline: 5%;
+    font-size: 1.4rem;
+  }
+  @media screen and (max-width: 450px) and (min-width: 375px) {
+    padding-inline: 2%;
+    font-size: 1.3rem;
+  }
+  @media screen and (max-width: 375px) {
+    padding-inline: 2%;
+    font-size: 1.1rem;
   }
 `;
 
@@ -143,8 +157,16 @@ function prepareData(startData, stays) {
 
 function DurationChart({ confirmedStays }) {
   const { isDarkMode } = useDarkMode();
+  const [width, setWidth] = useState(window.innerWidth);
   const startData = isDarkMode ? startDataDark : startDataLight;
   const data = prepareData(startData, confirmedStays);
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return window.removeEventListener("resize", handleResize);
+  });
+
   return (
     <ChartBox>
       <Heading as="h2">Stay duration summary</Heading>
@@ -154,8 +176,8 @@ function DurationChart({ confirmedStays }) {
             data={data}
             nameKey="duration"
             dataKey="value"
-            innerRadius={85}
-            outerRadius={110}
+            innerRadius={width > 520 ? 85 : width > 450 ? 75 : 65}
+            outerRadius={width > 520 ? 110 : width > 450 ? 95 : 80}
             cx="40%"
             cy="50%"
             paddingAngle={3}
