@@ -11,7 +11,7 @@ const StyledStat = styled.div`
   grid-template-rows: auto auto;
   column-gap: 1.6rem;
   row-gap: 0.4rem;
-  @media screen and (max-width: 1020px) and (min-width: 600px),
+  @media screen and (max-width: 1024px) and (min-width: 600px),
     (max-width: 1280px) and (min-width: 1200px) {
     width: 47%;
   }
