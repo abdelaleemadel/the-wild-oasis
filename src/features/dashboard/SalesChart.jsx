@@ -20,6 +20,15 @@ const StyledSalesChart = styled(DashboardBox)`
   & .recharts-cartesian-grid-vertical line {
     stroke: var(--color-grey-300);
   }
+
+  @media screen and (max-width: 600px) {
+    padding: 2%;
+    font-size: 1.4rem;
+    & svg {
+      width: 124% !important;
+      transform: translateX(-12%);
+    }
+  }
 `;
 
 const MyChart = ({ data, colors }) => (
@@ -32,7 +41,7 @@ const MyChart = ({ data, colors }) => (
       />
 
       <YAxis
-        unit="$"
+        unit="k$"
         tick={{ fill: colors.text }}
         tickLine={{ stroke: colors.text }}
       />
@@ -45,7 +54,7 @@ const MyChart = ({ data, colors }) => (
         fill={colors.totalSales.fill}
         strokeWidth={2}
         name="Total Sales"
-        unit="$"
+        unit="k$"
       />
       <Area
         dataKey="extrasSales"
@@ -54,7 +63,7 @@ const MyChart = ({ data, colors }) => (
         fill={colors.extrasSales.fill}
         strokeWidth={2}
         name="Extras Sales"
-        unit="$"
+        unit="k$"
       />
     </AreaChart>
   </ResponsiveContainer>
@@ -85,13 +94,13 @@ function SalesChart({ bookings, numOfDays }) {
       label: format(date, "MMM dd"),
       totalSales: bookings
         .filter((booking) => isSameDay(date, new Date(booking.created_at)))
-        ?.reduce((acc, curr) => acc + curr.totalPrice, 0),
+        ?.reduce((acc, curr) => acc + curr.totalPrice / 1000, 0),
       extrasSales: bookings
         .filter((booking) => isSameDay(date, new Date(booking.created_at)))
-        ?.reduce((acc, curr) => acc + curr.extraPrice, 0),
+        ?.reduce((acc, curr) => acc + curr.extraPrice / 1000, 0),
     };
   });
-
+  console.log(data);
   return (
     <StyledSalesChart>
       <Heading as="h2">
