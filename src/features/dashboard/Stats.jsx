@@ -15,6 +15,7 @@ const StyledStatsList = styled.div`
   width: 100%;
   margin-bottom: 2rem;
   justify-content: space-between;
+  grid-area: stats;
 `;
 function Stats({ bookings, confirmedStays, numOfDays, cabinsCount }) {
   //1.

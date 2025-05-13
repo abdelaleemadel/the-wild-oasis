@@ -9,12 +9,15 @@ import DurationChart from "./DurationChart";
 import TodayActivity from "../check-in-out/TodayActivity";
 
 const StyledDashboardLayout = styled.div`
-  /* 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto auto auto;
+  /* grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto; */
+  grid-template-areas: "stats stats" "activity duration" "sales sales";
   gap: 2.4rem;
-  justify-content: center; */
+  justify-content: center;
+  @media screen and (max-width: 1400px) {
+    grid-template-areas: "stats stats" "activity activity" "sales sales" "duration duration";
+  }
 `;
 
 function DashboardLayout() {
