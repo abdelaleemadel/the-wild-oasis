@@ -34,13 +34,13 @@ const StyledSalesChart = styled(DashboardBox)`
 const MyChart = ({ data, colors }) => (
   <ResponsiveContainer height={300} width="100%">
     <AreaChart data={data}>
-      <XAxisWrapper
+      <XAxis
         dataKey="label"
         tick={{ fill: colors.text }}
         tickLine={{ stroke: colors.text }}
       />
 
-      <YAxisWrapper
+      <YAxis
         unit="k$"
         tick={{ fill: colors.text }}
         tickLine={{ stroke: colors.text }}
@@ -100,7 +100,6 @@ function SalesChart({ bookings, numOfDays }) {
         ?.reduce((acc, curr) => acc + curr.extraPrice / 1000, 0),
     };
   });
-  console.log(data);
   return (
     <StyledSalesChart>
       <Heading as="h2">
@@ -112,22 +111,4 @@ function SalesChart({ bookings, numOfDays }) {
   );
 }
 
-const XAxisWrapper = ({
-  dataKey = "label",
-  tick = null,
-  tickLine = null,
-  ...otherProps
-}) => {
-  return (
-    <XAxis dataKey={dataKey} tick={tick} tickLine={tickLine} {...otherProps} />
-  );
-};
-const YAxisWrapper = ({
-  unit = "k$",
-  tick = null,
-  tickLine = null,
-  ...otherProps
-}) => {
-  return <YAxis unit={unit} tick={tick} tickLine={tickLine} {...otherProps} />;
-};
 export default SalesChart;
