@@ -28,11 +28,11 @@ const ChartBox = styled.div`
     font-weight: 600;
   }
 
-  @media screen and (max-width: 520px) and (min-width: 450px) {
+  @media screen and (max-width: 520px) {
     padding-inline: 5%;
     font-size: 1.4rem;
   }
-  @media screen and (max-width: 450px) and (min-width: 375px) {
+  @media screen and (max-width: 450px) {
     padding-inline: 2%;
     font-size: 1.3rem;
   }
@@ -161,11 +161,13 @@ function DurationChart({ confirmedStays }) {
   const startData = isDarkMode ? startDataDark : startDataLight;
   const data = prepareData(startData, confirmedStays);
   useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
     window.addEventListener("resize", handleResize);
 
-    return window.removeEventListener("resize", handleResize);
-  });
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <ChartBox>
