@@ -29,6 +29,15 @@ const StyledSalesChart = styled(DashboardBox)`
       transform: translateX(-12%);
     }
   }
+  @media screen and (max-width: 450px) {
+    padding: 0%;
+    font-size: 1.2rem;
+    margin: 0;
+    & svg {
+      width: 124% !important;
+      transform: translateX(-15%);
+    }
+  }
 `;
 
 const MyChart = ({ data, colors }) => (
