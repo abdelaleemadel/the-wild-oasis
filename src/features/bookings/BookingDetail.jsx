@@ -22,6 +22,12 @@ const HeadingGroup = styled.div`
   display: flex;
   gap: 2.4rem;
   align-items: center;
+  @media screen and (max-width: 1200px) {
+    & + button {
+      order: -1;
+      text-align: end;
+    }
+  }
 `;
 
 function BookingDetail() {
