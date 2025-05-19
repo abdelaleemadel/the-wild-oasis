@@ -30,7 +30,11 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  @media screen and (max-width: 940px) {
+    flex-direction: column;
+    align-items: start;
+    gap: 3rem;
+  }
   svg {
     height: 3.2rem;
     width: 3.2rem;
@@ -125,16 +129,18 @@ function BookingDataBox({ booking }) {
         <div>
           <HiOutlineHomeModern />
           <p>
-            {numNights} nights in Cabin <span>{cabinName}</span>
+            {numNights} nights <br /> Cabin <span>{cabinName}</span>
           </p>
         </div>
 
         <p>
-          {format(new Date(startDate), "EEE, MMM dd yyyy")} (
+          {format(new Date(startDate), "EEE, MMM dd yyyy")}
+          <br /> (
           {isToday(new Date(startDate))
             ? "Today"
             : formatDistanceFromNow(startDate)}
-          ) &mdash; {format(new Date(endDate), "EEE, MMM dd yyyy")}
+          )
+          <br /> {format(new Date(endDate), "EEE, MMM dd yyyy")}
         </p>
       </Header>
 
