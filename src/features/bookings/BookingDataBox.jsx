@@ -56,6 +56,10 @@ const Header = styled.header`
 
 const Section = styled.section`
   padding: 3.2rem 4rem 1.2rem;
+  border: 2px solid red;
+  @media screen and (max-width: 820px) {
+    padding: 1.6rem 2rem 0.6rem !important;
+  }
 `;
 
 const Guest = styled.div`
@@ -64,7 +68,14 @@ const Guest = styled.div`
   gap: 1.2rem;
   margin-bottom: 1.6rem;
   color: var(--color-grey-500);
-
+  border: 2px solid red;
+  @media screen and (max-width: 820px) {
+    flex-direction: column;
+    align-items: start;
+    & > span {
+      display: none;
+    }
+  }
   & p:first-of-type {
     font-weight: 500;
     color: var(--color-grey-700);
