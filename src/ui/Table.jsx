@@ -9,14 +9,15 @@ const StyledTable = styled.div`
   border-radius: 7px;
   overflow: auto;
   &::-webkit-scrollbar {
-    width: 2px;
+    width: 1px !important;
   }
   &::-webkit-scrollbar-track {
     background-color: var(--color-grey-300);
+    border-radius: 7px;
   }
   &::-webkit-scrollbar-thumb {
     background-color: var(--color-grey-100);
-    border-radius: 5px;
+    border-radius: 7px;
   }
 `;
 
