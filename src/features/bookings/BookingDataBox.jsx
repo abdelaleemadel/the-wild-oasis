@@ -30,10 +30,9 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media screen and (max-width: 940px) {
+  @media screen and (max-width: 500px) {
     flex-direction: column;
-    align-items: start;
-    gap: 3rem;
+    gap: 4rem;
   }
   svg {
     height: 3.2rem;
