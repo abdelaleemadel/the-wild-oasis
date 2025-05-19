@@ -8,17 +8,9 @@ const StyledTable = styled.div`
   background-color: var(--color-grey-0);
   border-radius: 7px;
   overflow: auto;
-  &::-webkit-scrollbar {
-    width: 1px !important;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: var(--color-grey-300);
-    border-radius: 7px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--color-grey-100);
-    border-radius: 7px;
-  }
+  scrollbar-width: thin;
+  position: relative;
+  scrollbar-color: var(--color-grey-100) var(--color-grey-300);
 `;
 
 const CommonRow = styled.div`
