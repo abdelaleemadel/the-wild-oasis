@@ -42,7 +42,7 @@ function Siderbar({ isClose, setIsClose }) {
     <StyledSidebar className={`${!isClose && "open"}`}>
       <HiXMark onClick={() => setIsClose(true)} />
       <Logo />
-      <MainNav />
+      <MainNav closeSideBar={setIsClose} />
     </StyledSidebar>
   );
 }

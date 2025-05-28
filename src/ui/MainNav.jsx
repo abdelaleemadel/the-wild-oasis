@@ -52,10 +52,10 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-export default function MainNav() {
+export default function MainNav({ closeSideBar }) {
   return (
     <nav>
-      <NavList>
+      <NavList onClick={() => closeSideBar(true)}>
         <li>
           <StyledNavLink to="/dashboard">
             <HiOutlineHome />
