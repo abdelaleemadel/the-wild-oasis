@@ -7,7 +7,7 @@ export default function useRecentBookings() {
   const [searchParams] = useSearchParams();
 
   const numOfDays = !searchParams.get("last")
-    ? 7
+    ? 90
     : Number(searchParams.get("last"));
 
   const queryDate = subDays(new Date(), numOfDays).toISOString();
