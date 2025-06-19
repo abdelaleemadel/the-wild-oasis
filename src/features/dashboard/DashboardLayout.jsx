@@ -12,6 +12,7 @@ const StyledDashboardLayout = styled.div`
   display: grid;
   /* grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto auto auto; */
+  grid-template-columns: 1fr 1fr;
   grid-template-areas: "stats stats" "activity duration" "sales sales";
   gap: 2.4rem;
   justify-content: center;
